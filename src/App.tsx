@@ -508,16 +508,11 @@ export default function App() {
       <footer className={`max-w-7xl mx-auto px-6 py-12 border-t mt-12 flex flex-col md:flex-row items-center justify-between gap-6 transition-colors ${isDarkMode ? 'border-white/5' : 'border-slate-200'}`}>
         <div className={`flex items-center gap-2 opacity-40 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
           <Palette className="w-4 h-4" />
-          <span className="text-xs font-bold tracking-widest uppercase">ColorCraft v1.0</span>
+          <span className="text-xs font-bold tracking-widest uppercase">ColorCraft v1.1</span>
         </div>
         <p className={`text-xs text-center ${isDarkMode ? 'text-white/30' : 'text-slate-400'}`}>
           Crafted with precision for designers and developers. Export high-quality color assets instantly.
         </p>
-        <div className={`flex gap-6 text-xs font-bold ${isDarkMode ? 'text-white/40' : 'text-slate-400'}`}>
-          <a href="#" className={`transition-colors ${isDarkMode ? 'hover:text-white' : 'hover:text-slate-900'}`}>Privacy</a>
-          <a href="#" className={`transition-colors ${isDarkMode ? 'hover:text-white' : 'hover:text-slate-900'}`}>Terms</a>
-          <a href="#" className={`transition-colors ${isDarkMode ? 'hover:text-white' : 'hover:text-slate-900'}`}>Support</a>
-        </div>
       </footer>
     </div>
   </div>
