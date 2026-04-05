@@ -74,12 +74,14 @@ export default function App() {
             </h1>
           </div>
           <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-white/5 rounded-full transition-colors">
+            <a 
+              href="https://github.com/VicRoger27/ColorCraft" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 hover:bg-white/5 rounded-full transition-colors"
+            >
               <Github className="w-5 h-5 text-white/60" />
-            </button>
-            <button className="p-2 hover:bg-white/5 rounded-full transition-colors">
-              <Twitter className="w-5 h-5 text-white/60" />
-            </button>
+            </a>
           </div>
         </div>
       </header>
@@ -98,7 +100,7 @@ export default function App() {
                 style={{ backgroundColor: pickerColor }}
                 layoutId="main-color"
               >
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10 pointer-events-none">
                   <motion.span 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -108,9 +110,12 @@ export default function App() {
                     {pickerColor.toUpperCase()}
                   </motion.span>
                   
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 pointer-events-auto">
                     <button 
-                      onClick={() => copyToClipboard(pickerColor)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        copyToClipboard(pickerColor);
+                      }}
                       className={`px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition-all active:scale-95 ${
                         chroma(pickerColor).luminance() > 0.5 ? 'bg-black/10 hover:bg-black/20 text-black' : 'bg-white/10 hover:bg-white/20 text-white'
                       }`}
@@ -119,7 +124,10 @@ export default function App() {
                       {copied ? 'Copied!' : 'Copy HEX'}
                     </button>
                     <button 
-                      onClick={() => downloadColorAsPng(pickerColor, `color-${pickerColor.replace('#', '')}.png`)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        downloadColorAsPng(pickerColor, `color-${pickerColor.replace('#', '')}.png`);
+                      }}
                       className={`px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition-all active:scale-95 ${
                         chroma(pickerColor).luminance() > 0.5 ? 'bg-black/10 hover:bg-black/20 text-black' : 'bg-white/10 hover:bg-white/20 text-white'
                       }`}
@@ -136,7 +144,7 @@ export default function App() {
                   value={pickerColor}
                   onChange={handleColorChange}
                   onBlur={handleColorBlur}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-0"
                 />
               </motion.div>
               
