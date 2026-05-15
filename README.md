@@ -1,5 +1,1 @@
-Open Source docs of ColorCraft
-
-:)
-
-.
+ColorCraft Github Respriotory
